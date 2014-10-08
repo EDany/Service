@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+
+# User
+GET     /user                       controllers.Application.signUp()
+POST    /user                       controllers.Application.createUser()
+
+# Device
+GET     /device                     controllers.Application.show()
+POST    /device                     controllers.Application.createDevice()
+
+# Deudas/Deudores
+GET     /deudas                     controllers.Application.list()
+POST    /deudas                     controllers.Application.createDeuda()
+
+# Notification
+GET     /notification               controllers.Application.list()
+POST    /notification               controllers.Application.createNotification()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
