@@ -21,13 +21,14 @@ public class Notificacion {
     @JoinColumn(name="idUsuarioTo")
     private Usuario idUsuarioTo;
 
+    @ManyToOne
+    @JoinColumn(name="idDeuda")
+    private Deuda idDeuda;
+
     private String notificacion;
 
     public Notificacion(){
-        this.setIdNotificacion(null);
-        this.setIdUsuarioFrom(null);
-        this.setIdUsuarioTo(null);
-        this.setNotificacion(null);
+        super();
     }
 
     public Notificacion(Integer idNotificacion, Usuario idUsuarioFrom, Usuario idUsuarioTo,
@@ -68,5 +69,13 @@ public class Notificacion {
 
     public void setNotificacion(String notificacion) {
         this.notificacion = notificacion;
+    }
+
+    public Deuda getIdDeuda() {
+        return idDeuda;
+    }
+
+    public void setIdDeuda(Deuda idDeuda) {
+        this.idDeuda = idDeuda;
     }
 }

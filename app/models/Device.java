@@ -20,9 +20,7 @@ public class Device implements Serializable{
     private String telefono;
 
     public Device(){
-        this.setDispositivo(null);
-        this.setIdUsuario(null);
-        this.setTelefono(null);
+        super();
     }
 
     public Device(String dispositivo, Usuario idUsuario, String telefono){

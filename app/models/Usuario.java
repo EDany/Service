@@ -15,31 +15,36 @@ public class Usuario {
     @GeneratedValue
     private Integer idUsuario;
 
-    @OneToMany(mappedBy="idUsuario", cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Device> listOfDevices = new ArrayList<Device>();
-    @OneToMany(mappedBy="idUsuario", cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsuario")
     private List<Deuda> listOfDeudas = new ArrayList<Deuda>();
-    @OneToMany(mappedBy="idUsuarioFrom", cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idUsuarioContacto")
+    private List<Deuda> listOfDeudas2 = new ArrayList<Deuda>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idUsuarioFrom")
     private List<Notificacion> listOfNotificacion = new ArrayList<Notificacion>();
-    @OneToMany(mappedBy="idUsuarioTo", cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idUsuarioTo")
     private List<Notificacion> listOfNotificacionTo = new ArrayList<Notificacion>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idUsuario")
+    private List<Contacto> listOfContacts = new ArrayList<Contacto>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContacto")
+    private List<Contacto> listOfContacts2 = new ArrayList<Contacto>();
 
     private String usuario;
     private String pass;
     private String email;
+    private Boolean sincronizacion;
 
     public Usuario(){
-        this.setIdUsuario(null);
-        this.setUsuario(null);
-        this.setPass(null);
-        this.setEmail(null);
+        super();
     }
 
-    public Usuario(Integer idUsuario, String usuario, String pass, String email){
+    public Usuario(Integer idUsuario, String usuario, String pass, String email, Boolean sincronizacion){
         this.idUsuario = idUsuario;
         this.usuario = usuario;
         this.pass = pass;
         this.email = email;
+        this.setSincronizacion(sincronizacion);
     }
 
     public Integer getIdUsuario() {
@@ -72,5 +77,13 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getSincronizacion(){
+        return sincronizacion;
+    }
+
+    public void setSincronizacion(Boolean sincronizacion){
+        this.sincronizacion = sincronizacion;
     }
 }

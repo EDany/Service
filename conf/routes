@@ -3,24 +3,33 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+#  GET     /:id                        controllers.Application.index(id : Integer)
 
 
 # User
-GET     /user                       controllers.Application.signUp()
-POST    /user                       controllers.Application.createUser()
+# GET      /user/:id                  controllers.Application.prueba(id : Integer)
+GET      /user                      controllers.Application.signIn()
+POST     /user                      controllers.Application.signUp()
+PUT      /user                      controllers.Application.updateCount()
+
+POST     /user/:id/contacto         controllers.Application.sincronizar(id : Integer)
 
 # Device
-GET     /device                     controllers.Application.show()
-POST    /device                     controllers.Application.createDevice()
+#GET     /device                     controllers.Application.show()
+#POST    /device                     controllers.Application.createDevice()
+
 
 # Deudas/Deudores
-GET     /deudas                     controllers.Application.list()
-POST    /deudas                     controllers.Application.createDeuda()
+GET     /user/deuda/:id             controllers.Application.getDeuda(id : Integer)
+GET     /user/:id/deudas            controllers.Application.listDeudas(id : Integer)
+POST    /user/:id/deudas            controllers.Application.createDeuda(id : Integer)
+PUT     /user/:idU/deuda            controllers.Application.confirmarDeuda(idU : Integer)
+PUT     /user/:id/deudas            controllers.Application.updateDeuda(id : Integer)
+DELETE  /user/:id/deudas            controllers.Application.deleteDeuda(id : Integer)
 
 # Notification
-GET     /notification               controllers.Application.list()
-POST    /notification               controllers.Application.createNotification()
+GET     /user/:id/notificacion      controllers.Application.listNotificaciones(id : Integer)
+#POST    /notification               controllers.Application.createNotification()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

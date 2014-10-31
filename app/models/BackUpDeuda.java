@@ -1,52 +1,44 @@
 package models;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import java.util.List;
 
 /**
- * Created by Edgar on 07/10/2014.
+ * Created by Edgar on 28/10/2014.
  */
 @Entity
-@Table(name="deuda")
-public class Deuda implements Serializable{
+@Table(name = "backupdeuda")
+public class BackUpDeuda {
 
     @Id
-    @GeneratedValue
+    private Integer idBackUp;
+
+    private String accion;
     private Integer idDeuda;
-
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario idUsuario;
-
-    @ManyToOne
-    @JoinColumn(name = "idUsuarioContacto")
-    private Usuario idUsuarioContacto;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idDeuda")
-    private List<Notificacion> listOfNotifications = new ArrayList<Notificacion>();
-
+    private Integer idUsuario;
     private Boolean estado;
-
     private String fecha;
     private String descripcion;
     private String contacto;
     private String telContacto;
     private String emailContacto;
-
+    private Integer idUsuarioContacto;
     private String moneda;
     private Double saldo;
     private Boolean relacion;
 
-    public Deuda() {
+    public BackUpDeuda(){
         super();
     }
 
-    public Deuda(Integer idDeuda, Usuario idUsuario, Boolean estado, String fecha, String descripcion,
-                 String contacto, String telContacto, String emailContacto, Usuario idUsuarioContacto,
-                 String moneda, Double saldo, Boolean relacion){
+    public BackUpDeuda(Integer idBackUp, String accion, Integer idDeuda,
+                       Integer idUsuario, Boolean estado, String fecha,
+                       String descripcion, String contacto, String telContacto,
+                       String emailContacto, Integer idUsuarioContacto,
+                       String moneda, Double saldo, Boolean relacion) {
+        this.setIdBackUp(idBackUp);
         this.setIdDeuda(idDeuda);
         this.setIdUsuario(idUsuario);
         this.setEstado(estado);
@@ -61,6 +53,15 @@ public class Deuda implements Serializable{
         this.setRelacion(relacion);
     }
 
+
+    public Integer getIdBackUp() {
+        return idBackUp;
+    }
+
+    public void setIdBackUp(Integer idBackUp) {
+        this.idBackUp = idBackUp;
+    }
+
     public Integer getIdDeuda() {
         return idDeuda;
     }
@@ -69,11 +70,11 @@ public class Deuda implements Serializable{
         this.idDeuda = idDeuda;
     }
 
-    public Usuario getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(Usuario idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -117,19 +118,19 @@ public class Deuda implements Serializable{
         this.telContacto = telContacto;
     }
 
-    public String getEmailContacto(){
+    public String getEmailContacto() {
         return emailContacto;
     }
 
-    public void setEmailContacto(String emailContacto){
+    public void setEmailContacto(String emailContacto) {
         this.emailContacto = emailContacto;
     }
 
-    public Usuario getIdUsuarioContacto(){
-        return this.idUsuarioContacto;
+    public Integer getIdUsuarioContacto() {
+        return idUsuarioContacto;
     }
 
-    public void setIdUsuarioContacto(Usuario idUsuarioContacto){
+    public void setIdUsuarioContacto(Integer idUsuarioContacto) {
         this.idUsuarioContacto = idUsuarioContacto;
     }
 
